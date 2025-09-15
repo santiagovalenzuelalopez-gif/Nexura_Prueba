@@ -33,8 +33,7 @@ Requisitos
 Instalación y configuración
 ----------------------------------------
 1. Clonar el repositorio:
-   git clone https://github.com/santiagovalenzuela/Nexura_Prueba.git
-   cd Nexura_Prueba
+   gh repo clone santiagovalenzuelalopez-gif/Nexura_Prueba
 
 2. Importar la base de datos:
    - Abrir phpMyAdmin o usar la terminal MySQL.
