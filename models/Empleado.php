@@ -64,6 +64,7 @@ class Empleado {
     // Actualizar
     public function update($id,$data) {
         $sql = "UPDATE empleados SET nombre=?,email=?,sexo=?,area_id=?, boletin=?,descripcion=? WHERE id=?";
+        $sql = "UPDATE empleados SET nombre=?,email=?,sexo=?,area_id=?,boletin=?,descripcion=? WHERE id=?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([
             $data['nombre'],
@@ -71,6 +72,7 @@ class Empleado {
             $data['sexo'],
             $data['area_id'],
             isset($data['boletin']) ? 1 : 0,
+            $data['boletin'],
             $data['descripcion'],
             $id           
         ]);
@@ -103,4 +105,11 @@ class Empleado {
 
 }
 
+        // Obtener Area de un empleado
+    public function getAreasByEmpleado($id) {
+    $stmt = $this->db->prepare("SELECT area_id FROM empleados WHERE id=?");
+    $stmt->execute([$id]);
+    return $stmt->fetchColumn();
+    }
 
+}
