@@ -14,8 +14,9 @@ db/
 models/
   Empleado.php       # Modelo con métodos CRUD + gestión de roles
 assets/
-  css/styles.css     # Estilos básicos
   js/validation.js   # Validación en cliente
+controllers/
+  EmpleadoController.php #Controlador y validacion desde el servidor
 index.php            # Listado de empleados
 form.php             # Crear / Editar empleados
 sql/
