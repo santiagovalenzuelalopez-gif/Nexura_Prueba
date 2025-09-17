@@ -1,28 +1,14 @@
 <?php
-require_once __DIR__ . '/models/Empleado.php';
-$empleado = new Empleado();
-
-// eliminar
-if (isset($_GET['delete'])) {
-    $empleado->delete((int)$_GET['delete']);
-    header("Location: index.php");
-    exit;
-}
 session_start();
 require_once "models/Empleado.php";
 
-// listar
 $empleado = new Empleado();
 $empleados = $empleado->all();
 
 ?>
-<!doctype html>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Empleados</title>
-<link rel="stylesheet" href="assets/css/styles.css">
   <meta charset="UTF-8">
   <title>Gestión de Empleados</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,26 +16,6 @@ $empleados = $empleado->all();
     td.nombre-col{ white-space: nowrap; }
   </style>
 </head>
-<body>
-<h1>Empleados</h1>
-<a href="form.php">Crear nuevo empleado</a>
-<table>
-<tr><th>ID</th><th>Nombre</th><th>Email</th><th>Sexo</th><th>Área</th><th>Boletín</th><th>Acciones</th></tr>
-<?php foreach($empleados as $e): ?>
-<tr>
-  <td><?= $e['id'] ?></td>
-  <td><?= htmlspecialchars($e['nombre']) ?></td>
-  <td><?= htmlspecialchars($e['email']) ?></td>
-  <td><?= $e['sexo'] ?></td>
-  <td><?= htmlspecialchars($e['area_nombre']) ?></td>
-  <td><?= $e['boletin'] ? 'Sí':'No' ?></td>
-  <td>
-    <a href="form.php?id=<?= $e['id'] ?>">Editar</a> |
-    <a href="index.php?delete=<?= $e['id'] ?>" onclick="return confirm('¿Eliminar?')">Eliminar</a>
-  </td>
-</tr>
-<?php endforeach; ?>
-</table>
 <body class="bg-light">
 
 <div class="container mt-4">
@@ -113,4 +79,3 @@ $empleados = $empleado->all();
 
 </body>
 </html>
-
